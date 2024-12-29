@@ -1,0 +1,354 @@
+/* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: white;
+}
+
+/* Header Styling */
+.header {
+    background-color: #000;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    margin-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav-links a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Landing Page Section */
+.landing-page {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.left-section {
+    background-image: url('Image1.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100%;
+}
+
+.content {
+    width: 50%;
+    text-align: center;
+}
+
+/* Punchline styling */
+.content h1 {
+    font-size: 3rem;
+}
+
+.content button {
+    background-color: transparent;
+    color: #00ffcc;
+    border: 2px solid #00ffcc;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.content button:hover {
+    background-color: #00ffcc;
+    color: black;
+}
+
+/* Small screen (mobile view) */
+@media (max-width: 768px) {
+    .landing-page {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .left-section {
+        display: none;
+    }
+
+    .content {
+        width: 100%;
+        text-align: center;
+        padding: 0 20px;
+        margin-top: 120px;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .content button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .landing-page {
+        background-image: url('Image1.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+}
+
+/* Info Section */
+.info-section {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #00ffcc;
+    border-top: 2px solid #00ffcc;
+}
+
+.info-box span {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Best Selling Products Section */
+.products-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #000;
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    height: 300px; /* Default height for smaller screens */
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+#product1 {
+    background-image: url('Image1.jpg');
+}
+
+#product2 {
+    background-image: url('Image1.jpg');
+}
+
+#product3 {
+    background-image: url('Image1.jpg');
+}
+
+.product-details h2 {
+    font-size: 18px;
+    color: #00ffcc;
+    margin-bottom: 10px;
+}
+
+.product-details p {
+    font-size: 16px;
+}
+
+.buy-now {
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    border: none;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.buy-now:hover {
+    background-color: #00ccaa;
+}
+
+/* Increase card height for larger screens */
+@media (min-width: 768px) {
+    .product-card {
+        height: 400px; /* Increase height for larger screens */
+    }
+}
+
+/* Responsive design for small screens */
+@media (max-width: 425px) {
+    .products-section {
+        flex-direction: column;
+    }
+
+    .product-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Customer Rating Section */
+.customer-rating-section {
+    padding: 20px;
+    background-color: #000;
+    text-align: center;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: scroll;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-card {
+    scroll-snap-align: center;
+    flex: none;
+    width: 80%;
+    margin-right: 15px;
+}
+
+.customer-card {
+    background-color: #111;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Customer image styling */
+.customer-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+#customer1 {
+    background-image: url('Image1.jpg'); /* Replace with actual image URL */
+}
+
+#customer2 {
+    background-image: url('Image1.jpg'); /* Replace with actual image URL */
+}
+
+#customer3 {
+    background-image: url('Image1.jpg'); /* Replace with actual image URL */
+}
+
+#customer4 {
+    background-image: url('Image1.jpg'); /* Replace with actual image URL */
+}
+
+.customer-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.customer-details h3 {
+    color: #00ffcc;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.customer-details p {
+    font-size: 16px;
+    max-width: 100%;
+}
+
+/* Adjustments for screens wider than 426px */
+@media (min-width: 426px) {
+    .customer-card {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .customer-image {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+
+    .customer-details {
+        align-items: flex-start;
+    }
+
+    .customer-details h3 {
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .customer-details p {
+        font-size: 16px;
+        text-align: left;
+    }
+}
+
+/* Center customer image and details for screens up to 425px */
+@media (max-width: 425px) {
+    .customer-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .customer-details {
+        align-items: center;
+    }
+
+    .customer-details h3 {
+        text-align: center;
+    }
+
+    .customer-details p {
+        text-align: center;
+    }
+}

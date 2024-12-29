@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{product.Name}}</title>
+    <link rel="stylesheet" href="/style/oneproduct.css">
+</head>
+<body>
+    <div class="product-container">
+        <div class="top-section">
+            <div class="rating" id="product-rating">
+                {{#if product.Rating}}
+                    {{product.Rating}}
+                {{else}}
+                    No ratings yet
+                {{/if}}
+            </div>
+            <div class="buy-now-price">
+                <button class="buy-now" id="buy-now-btn">Buy Now</button>
+                <button class="add-to-cart" id="add-to-cart-btn">Add to Cart</button>
+                <div id="product-price" class="price">${{product.Price}}</div>
+            </div>
+        </div>
+
+        {{!-- <div id="product-image" class="product-image" 
+            style="background-image: url('{{product.Images.[4]}}')">
+        </div> --}}
+        <h2>{{product.Images.[4]}}</h2>
+
+        
+        <div id="product-name" class="product-name">{{product.Name}}</div>
+        <div id="product-description" class="product-description">
+            {{product.RichDescription}}
+        </div>
+    </div>
+    <script src="/static/OneProduct.js"></script>
+</body>
+</html>
+
+
+
+
+

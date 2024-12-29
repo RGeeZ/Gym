@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* Top section for rating, button, and price */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+}
+
+.rating {
+    font-size: 24px;
+    color: white;
+    margin-left: 20px;
+}
+
+.buy-now-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px;
+}
+
+.buy-now {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.price {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/* Product image as background */
+.product-image {
+    width: 60%;
+    height: 50%; /* Adjust height */
+    max-height: 400px;
+    margin-top: 80px; /* Push the image below the top section */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('Image1.jpg'); /* Default large screen image */
+}
+
+/* Product Name below image */
+.product-name {
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Tablet screens (768px and up) */
+@media (min-width: 768px) {
+    .product-image {
+        background-image: url('Image1.jpg'); /* Use larger image for tablet and larger screens */
+    }
+}
+
+/* Small screen adjustments */
+@media (max-width: 767px) {
+    .top-section {
+        padding: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .rating, .price {
+        font-size: 16px;
+    }
+
+    .buy-now {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .product-image {
+        width: 100%; /* Full width for smaller screens */
+        height: 200px;
+        background-image: url('Image1.jpg'); /* Use smaller image for mobile */
+    }
+}

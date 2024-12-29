@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Include FontAwesome CSS for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="userprofile.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Dummy Profile -->
+        <div class="profile-dummy">U</div>
+
+        <h1>User Profile</h1>
+
+        {{#if error}}
+            <p style="color: red;">{{error}}</p>
+        {{/if}}
+
+        <form action="/update-profile" method="POST">
+            <!-- Name -->
+            <div>
+                <label for="name">Name:</label>
+                <span id="name-display">{{user.Name}}</span>
+                <i class="fas fa-edit" onclick="showEditField('name')"></i>
+                <input type="text" id="name" name="name" value="{{user.Name}}">
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email">Email:</label>
+                <span id="email-display">{{user.Email}}</span>
+                <i class="fas fa-edit" onclick="showEditField('email')"></i>
+                <input type="email" id="email" name="email" value="{{user.Email}}">
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <label for="contact">Contact:</label>
+                <span id="contact-display">{{user.Contact}}</span>
+                <i class="fas fa-edit" onclick="showEditField('contact')"></i>
+                <input type="text" id="contact" name="contact" value="{{user.Contact}}">
+            </div>
+
+            <!-- Address -->
+            <div>
+                <label for="address">Address:</label>
+                <span id="address-display">{{user.Address}}</span>
+                <i class="fas fa-edit" onclick="showEditField('address')"></i>
+                <input type="text" id="address" name="address" value="{{user.Address}}">
+            </div>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <script>
+        function showEditField(field) {
+            // Show the input field
+            document.getElementById(field).style.display = 'inline';
+
+            // Hide the label, span, and edit icon
+            document.getElementById(`${field}-display`).style.display = 'none';
+            document.querySelector(`#${field}-display + i`).style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <h1>Review Your Order</h1>
+    <div class="container">
+        <!-- Shipping Address -->
+        {{!-- <div class="address">
+            <strong>Shipping Address:</strong>
+            <p>{{cart.address}}</p>
+        </div> --}}
+        <div class="container-box">
+            <div class="container-details">
+                <p><strong>Shipping Address:</strong></p>
+                <p>{{cart.address}}</p>
+            </div>
+        </div>
+
+
+        <!-- Cart Items -->
+        <div class="cart-items">
+            <h2 style="color: white;">Your Cart:</h2>
+            {{#each cart.items}}
+            <div class="cart-item">
+                <img src="{{this.productImage}}" alt="{{this.productName}}">
+                <div class="cart-item-details">
+                    <p><strong>Product:</strong> {{this.productName}}</p>
+                    <p><strong>Price:</strong> ${{this.productPrice}}</p>
+                    <p><strong>Quantity:</strong> {{this.quantity}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Total Price -->
+        <div class="total">
+            Total Price: ${{cart.totalPrice}}
+        </div>
+        <div id="cartData" data-cart-id="{{cart._id}}" data-order-id="{{cart.orderId}}"></div>
+
+        <!-- Payment Button -->
+        <div class="payment-button">
+            <button id="payButton">Proceed to Pay</button>
+        </div>
+    </div>
+<script src="/static/payment.js"></script>
+</body>
+</html>

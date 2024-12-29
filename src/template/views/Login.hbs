@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Bootstrap 3.4.1 CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- FontAwesome icons -->
+  <script src="https://use.fontawesome.com/26fa493e94.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="navbar_login.css">
+
+  <style>
+    /* Additional styling, you can put all in external CSS */
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="log">
+          <form class="txtb" action="/login" method="POST" onsubmit="return validate()">
+            <h1>Login</h1>
+            <div id="social-icons">
+              <div class="col icons">
+                <a href="#"><img src="https://img.icons8.com/color/96/000000/facebook-circled--v5.png" alt="Facebook"/></a>
+                <a href="#"><img src="https://img.icons8.com/color/96/000000/google-logo.png" alt="Google"/></a>
+                <a href="#"><img src="https://img.icons8.com/color/96/000000/twitter.png" alt="Twitter"/></a>
+              </div>
+            </div>
+
+            <input type="email" placeholder="E-mail" class="txtb" id="email" name="email" required>
+            <input type="password" placeholder="Password" class="txtb" id="password" name="password" required>
+
+            <button type="submit">Start</button>
+          </form>
+          <a href="ForgotPassword">Forgot Password?</a>
+          <p style="color: aliceblue;">Don't have an account? <a href="Signup">Signup</a></p>  
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

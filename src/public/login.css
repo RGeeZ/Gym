@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Urbanist;
+  background-color: #000;
+}
+
+h1 {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.container {
+  background-color: #000;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  /* border: 1px solid #5e9c76; */
+  border-radius: 10px;
+  background-color: #111;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  height: auto; /* Ensure it doesn't take up full height */
+}
+
+.log {
+  margin: 0 auto;
+  padding: 10px 0;
+  max-width: 400px;
+  border-radius: 10px;
+  background-color: #000;
+  border: 1px solid #52ab98;
+  height: auto; /* Prevent full height usage */
+}
+
+.txtb {
+  text-align: center;
+}
+
+.txtb input {
+  display: block;
+  height: 44px;
+  width: 100%;
+  max-width: 350px;
+  background-color: #dcdcdc;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  font-family: 'Itim', cursive;
+  border-radius: 10px;
+  padding: 0 10px; /* Added padding to avoid overlap with border */
+}
+
+.txtb button {
+  background-color: #00A86B;
+  display: block;
+  color: white;
+  height: 44px;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #03C04A;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Reduced gap for smaller screens */
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+nav {
+  width: 100%;
+}
+
+label.logo {
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  font-weight: bold;
+}
+
+nav ul {
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 7px 13px;
+  border-radius: 3px;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 250, 250, 0.5);
+  border-radius: 0.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+img {
+  height: 40px;
+}
+
+@media screen and (min-width: 769px){
+  .container {
+    width: 500px;
+  }
+  .log{
+    width: 500px;
+  }
+  .txtb {
+    margin-left: 10px;
+  }
+  .txtb input, .txtb button {
+    margin-left: 10px;
+  }
+  .log p, .log a {
+    margin-left: 20px;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    padding: 10px; /* Reduce padding */
+    width: 90%; /* Make the container fit better on smaller screens */
+  }
+  .log {
+    margin: 10px auto;
+    padding: 10px;
+    width: 100%; /* Ensure the card is not too wide */
+  }
+  .txtb input, .txtb button {
+    max-width: 100%; /* Ensure inputs/buttons fit within the container */
+  }
+  #social-icons {
+    display: flex;
+    justify-content: center; /* Align icons horizontally */
+    gap: 15px; /* Space between icons */
+    margin-bottom: 15px; /* Add space below icons */
+  }
+  #social-icons a {
+    font-size: 30px; /* Adjust size to fit smaller screens */
+    padding: 5px;
+  }
+}
+
+@media screen and (min-width: 426px) { /* For screens wider than 425px */
+  .container {
+    padding: 20px; /* Ensure padding remains the same */
+  }
+  .txtb input {
+    padding: 0 15px; /* Add padding to avoid overlap with borders */
+  }
+  .forgot-password {
+    margin-left: 10px; /* Add margin to move it slightly to the right */
+  }
+}
+
+@media screen and (max-width: 768px) { /* Tablet screens */
+  .container {
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 576px) { /* Mobile screens */
+  .container {
+    max-width: 280px;
+  }
+}
+
+#social-icons {
+  text-align: center;
+}
+
+#social-icons a {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-size: 40px;
+  border-radius: 5px;
+  transition: transform 2s ease, color 2s ease;
+}
+
+#social-icons a:hover {
+  transform: translateY(-20px);
+}
+
+.facebook {
+  color: #4267B2;
+}
+
+.google {
+  color: #EA4335;
+}
+
+.gmail {
+  color: red;
+}

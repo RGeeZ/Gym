@@ -1,0 +1,39 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "handlebars": "^4.7.8",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.1",
+    "morgan": "^1.10.0",
+    "node-static": "^0.7.11",
+    "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "jest": "^29.7.0",
+    "mocha": "^11.0.1",
+    "nyc": "^17.1.0",
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "test": "jest --watchAll --verbose --coverage --maxWorkers=1",
+    "roots": [
+      "/Users/rgeez/Gym-main/website/src/tests"
+    ]
+  }
+}

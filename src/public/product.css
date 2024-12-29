@@ -1,0 +1,140 @@
+/* Flex container for cards */
+*{
+    background-color: black;
+}
+.sidebar{
+    color: white;
+}
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Card styles */
+.card {
+    width: 100%;
+    max-width: 250px; /* Limit card width */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: #fff;
+    background-color: black;
+    margin: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative; /* For button placement */
+    border: 1px solid #5e9c76;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.card .description {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Flex container for price and button */
+.card .price-button-container {
+    display: flex;
+    justify-content: space-between; /* Space between price and button */
+    align-items: center; /* Center vertically */
+}
+
+.card .price {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+.card .buy-now {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card .buy-now:hover {
+    background-color: #218838;
+}
+
+.card .add-to-cart{
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card .add-to-cart:hover {
+    background-color: #218838;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .product-link:hover {
+    cursor: pointer;
+}
+  
+
+/* Tablet screens */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .card {
+        flex: 1 1 calc(33% - 20px); /* 3 cards per row for tablets */
+    }
+}
+
+/* Larger screens */
+@media screen and (min-width: 1025px) {
+    .card {
+        flex: 1 1 calc(20% - 20px); /* 5 cards per row for large screens */
+    }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 767px) {
+    .product-container {
+        display: block; /* Switch to block layout for better scrolling */
+        overflow-y: auto; /* Allow vertical scrolling */
+        height: auto; /* Ensure container doesn't restrict height */
+        padding: 0 10px; /* Adjust padding */
+    }
+
+    .card {
+        width: 90%; /* Make cards smaller for mobile */
+        margin: 10px auto; /* Center cards */
+        opacity: 1; /* Ensure all cards are visible */
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+}
+

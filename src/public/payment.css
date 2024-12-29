@@ -1,0 +1,139 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #000; /* Black background */
+    color: #FFFFFF; /* White text */
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #333333; /* Dark gray */
+    padding: 10px 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* Main Container */
+h1 {
+    text-align: center;
+    color: #52ab98; /* Light blue tone */
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: #000; /* Black background for container */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Reusable Container Box (Cart and Address) */
+.container-box {
+    display: flex;
+    align-items: center;
+    background-color: #000; /* Black background */
+    border: 1px solid #52ab98; /* Light blue border */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* White text */
+}
+
+/* Cart Items Container */
+.cart-items {
+    border: 1px solid #52ab98;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Cart Item Layout */
+.cart-item {
+    display: flex; /* Flexbox to align image and details in a row */
+    align-items: center; /* Center-align items vertically */
+    margin-bottom: 10px; /* Space between items */
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px; /* Space between image and text */
+    padding: 10px;
+}
+
+.cart-item-details {
+    flex: 1; /* Take up remaining space */
+    color: #FFFFFF; /* White text */
+}
+
+.cart-item-details p {
+    margin: 5px 0;
+}
+
+.cart-item-details strong {
+    color: #52ab98; /* Highlight labels with light blue */
+}
+
+/* Cart and Address Text Details */
+.container-details {
+    flex: 1;
+    color: #FFFFFF; /* White text */
+}
+
+.container-details strong {
+    color: #52ab98; /* Highlight labels with light blue */
+    font-size: 1.1em;
+}
+
+.container-details p {
+    margin: 5px 0;
+}
+
+/* Total Price */
+.total {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+    color: #52ab98;
+}
+
+/* Payment Button */
+.payment-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.payment-button button {
+    background-color: #000; /* Black background */
+    color: #52ab98; /* Light blue text */
+    padding: 12px 24px;
+    border: 2px solid #52ab98; /* Light blue border */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.payment-button button:hover {
+    background-color: #52ab98;
+    color: #000; /* Black text on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #333333;
+    color: #AAAAAA;
+    padding: 10px 20px;
+    text-align: center;
+}

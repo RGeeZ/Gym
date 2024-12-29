@@ -1,0 +1,118 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+/* Header */
+header {
+    background-color: #000000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Cart Container */
+#cart-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: black;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #5e9c76;
+    padding: 20px;
+}
+
+/* Cart Item */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #5e9c76;
+    padding-bottom: 10px;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.item-details {
+    flex: 1;
+    margin-left: 20px;
+    color: white;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-btn {
+    border: none;
+    background-color: grey;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: grey;
+    font-size: 1.5rem;
+}
+
+/* Charges and Total */
+#charges-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #000000;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#charges-container .charge-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+/* Pay Now Button */
+.pay-now {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+@media only screen and (min-width: 376px) and (max-width: 768px)  {
+    .cart-container{
+        width: 90%;
+        margin: 20px;
+        padding: 20px;
+    }
+   
+    }
