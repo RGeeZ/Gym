@@ -3,18 +3,18 @@ name: 🚀 CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # 🔥 Triggers CI/CD on pushes to main branch
+      - main  # 🔥 Triggers the pipeline on pushes to the main branch
 
 jobs:
-  alpha:  # 🛠️ Stage 1: Alpha (Unit Tests)
+  alpha:  # ✅ Stage 1: Alpha (Unit Testing)
     runs-on: ubuntu-latest
-    
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: 🔍 Debug Repository Structure
-        run: ls -R  # Prints directory structure to verify paths
+      - name: 🔍 Debug Directory Structure
+        run: ls -R
+        working-directory: Gym  # ✅ Check folder structure
 
       - name: ⚙️ Set Up Node.js
         uses: actions/setup-node@v4
@@ -23,16 +23,15 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
-        working-directory: website  # Ensure correct folder
+        working-directory: Gym/website  # ✅ Corrected path
 
       - name: ✅ Run Unit Tests
         run: npm test
-        working-directory: website
+        working-directory: Gym/website
 
-  beta:  # 🔄 Stage 2: Beta (Integration Tests)
-    needs: alpha  # ✅ Runs only after Alpha (unit tests) succeed
+  beta:  # ✅ Stage 2: Beta (Integration Testing)
+    needs: alpha  # 🛑 Only runs if 'alpha' stage passes
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
@@ -44,16 +43,15 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
-        working-directory: website
+        working-directory: Gym/website
 
-      - name: 🔄 Run Integration Tests
-        run: npm run test:integration  # Adjust based on your setup
-        working-directory: website
+      - name: 🔬 Run Integration Tests
+        run: npm run test:integration  # ✅ Run integration tests (replace with correct command)
+        working-directory: Gym/website
 
-  production:  # 🚀 Stage 3: Production (Deployment)
-    needs: beta  # ✅ Runs only after Beta (integration tests) succeed
+  prod:  # ✅ Stage 3: Production Deployment
+    needs: beta  # 🛑 Only runs if 'beta' stage passes
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
@@ -65,13 +63,13 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
-        working-directory: website
+        working-directory: Gym/website
 
       - name: 🏗️ Build Project
-        run: npm run build
-        working-directory: website
+        run: npm run build  # ✅ Modify this for your build process
+        working-directory: Gym/website
 
       - name: 🚀 Deploy Application
         run: |
-          echo "🚀 Deploying to Production..."
-          # 🔥 Add deployment commands (e.g., AWS S3, Firebase, SSH, etc.)
+          echo "🚀 Deploying application..."
+          # 🔥 Add deployment commands here (e.g., SSH, AWS, Firebase)
