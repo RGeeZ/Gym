@@ -14,6 +14,16 @@ router.post('/signup', async (req, res) => {
         const { name, age, password, confirm_password, email, contact, address } = req.body;
 
 
+        // Check for leading/trailing spaces
+        const hasLeadingOrTrailingSpace = (str) => /^\s|\s$/.test(str);
+        const inputs = { name, age, password, confirm_password, email, contact, address };
+        for (const [key, value] of Object.entries(inputs)) {
+            const strValue = String(value); // Convert the value to a string
+            if (hasLeadingOrTrailingSpace(strValue)) {
+                return res.status(400).send(`Inputs must not contain leading or trailing spaces`);
+            }
+        }
+
         // User verification if user is alreadypresent or not
         const user = await User.findOne({Email: email});
         if(user){
@@ -46,12 +56,8 @@ router.post('/signup', async (req, res) => {
         if (!/^\d{10}$/.test(contact)) {
             return res.status(400).send('Contact must be a valid 10-digit number.');
         }
-        // Check for leading/trailing spaces
-        const inputs = [name, age, password, confirm_password, email, contact, address];
-        if (inputs.some(input => String(input).trim() !== input)) {
-            return res.status(400).send('Inputs must not contain leading or trailing spaces.');
-        }
-
+        
+        
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             Name: name.trim(),

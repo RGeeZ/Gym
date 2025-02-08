@@ -7,7 +7,7 @@ const request = require('supertest');
 const app = require('../../../app');  // Import your Express app
 const Product = require('../../models/product');  // Product model
 const sinon = require('sinon');  // Import sinon for stubbing
-const { expect } = require('@jest/globals');  // Use Jest's expect function
+const { expect, it } = require('@jest/globals');  // Use Jest's expect function
 //jest.setTimeout(50000); // Set timeout to 10 seconds
 
 
@@ -32,7 +32,25 @@ describe('POST /signup', () => {
     it.skip('should return 400 if required fields are missing', async () => {
         // test code
     });
-    
+
+    it('Check for leading and trailing spaces', async() => {
+        const response = await request(app)
+                .post('/signup')
+                .send({
+                    name: ' amazon1 ',
+                    age: 25,
+                    // password: await bcrypt.hash('Pass123!', 10),
+                    password: 'Pass123!',
+                    email: ' amazon1@gmail.com ',
+                    contact: ' 1234567890',
+                    address: '123Street '
+                })
+            expect(response.status).toBe(400);
+            expect(response.text).toBe('Inputs must not contain leading or trailing spaces');
+
+
+    });
+
     it('should return 400 if required fields are missing', async () => {
         const response = await request(app)
             .post('/signup')
@@ -42,6 +60,33 @@ describe('POST /signup', () => {
             });
         expect(response.status).toBe(400);
         expect(response.text).toBe('All fields are required.');
+    });
+
+
+    it('should return 409 if email is already registered', async () => {
+        await User.create({
+            name: 'amazon1',
+            age: 25,
+            password: await bcrypt.hash('Pass123!', 10),
+            email: 'amazon1@gmail.com',
+            contact: '1234567890',
+            address: '123Street'
+        });
+
+        const response = await request(app)
+            .post('/signup')
+            .send({
+                name: 'amazon1',
+                age: 25,
+                password: 'Pass123!',
+                confirm_password: 'Pass123!',
+                email: 'amazon1@gmail.com',
+                contact: '1234567890',
+                address: '123Street'
+            });
+
+        expect(response.status).toBe(400);
+        expect(response.text).toBe('email already exists.');
     });
 
     it('should return 400 for invalid email format', async () => {
@@ -106,57 +151,5 @@ describe('POST /signup', () => {
             });
         expect(response.status).toBe(400);
         expect(response.text).toBe('Contact must be a valid 10-digit number.');
-    });
-
-    // it('should save a valid user and return 201', async () => {
-    //     const response = await request(app)
-    //         .post('/signup')
-    //         .send({
-    //             name: 'John Doe',
-    //             age: 25,
-    //             password: 'Pass123!',
-    //             confirm_password: 'Pass123!',
-    //             email: 'john@example.com',
-    //             contact: '1234567890',
-    //             address: '123 Street'
-    //         });
-
-    //     expect(response.status).toBe(201);
-    //     expect(response.headers['set-cookie']).toBeDefined();
-
-    //     // Verify that the user is saved in the database
-    //     const user = await User.findOne({ email: 'john@example.com' });
-    //     expect(user).toBeDefined();
-    //     expect(user.name).toBe('John Doe');
-
-    //     // Verify password is hashed
-    //     const isPasswordValid = await bcrypt.compare('Pass123!', user.password);
-    //     expect(isPasswordValid).toBe(true);
-    // });
-
-    it('should return 409 if email is already registered', async () => {
-        await User.create({
-            name: 'amazon1',
-            age: 25,
-            password: await bcrypt.hash('Pass123!', 10),
-            email: 'amazon1@gmail.com',
-            contact: '1234567890',
-            address: '123Street'
-        });
-
-        const response = await request(app)
-            .post('/signup')
-            .send({
-                name: 'amazon1',
-                age: 25,
-                password: 'Pass123!',
-                confirm_password: 'Pass123!',
-                email: 'amazon1@gmail.com',
-                contact: '1234567890',
-                address: '123Street'
-            });
-
-        expect(response.status).toBe(400);
-        expect(response.text).toBe('email already exists.');
     });
 });
