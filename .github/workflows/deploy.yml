@@ -3,19 +3,18 @@ name: 🚀 CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # 🔥 Change if needed
+      - main  # 🔥 Triggers CI/CD on pushes to main branch
 
 jobs:
-  alpha:
-    name: 🧪 Alpha - Unit Testing
+  alpha:  # 🛠️ Stage 1: Alpha (Unit Tests)
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: website  # ✅ Ensure correct directory
-
+    
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
+
+      - name: 🔍 Debug Repository Structure
+        run: ls -R  # Prints directory structure to verify paths
 
       - name: ⚙️ Set Up Node.js
         uses: actions/setup-node@v4
@@ -24,20 +23,15 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
-
-      - name: 🕵️ Check Test Directory
-        run: ls -R src/tests || echo "❌ No tests found!"
+        working-directory: website  # Ensure correct folder
 
       - name: ✅ Run Unit Tests
-        run: npx jest --passWithNoTests
+        run: npm test
+        working-directory: website
 
-  beta:
-    name: 🔄 Beta - Integration Testing
-    needs: alpha  # ✅ Runs only after Alpha succeeds
+  beta:  # 🔄 Stage 2: Beta (Integration Tests)
+    needs: alpha  # ✅ Runs only after Alpha (unit tests) succeed
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: website  # ✅ Ensure correct directory
 
     steps:
       - name: 📥 Checkout Code
@@ -50,23 +44,34 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
+        working-directory: website
 
       - name: 🔄 Run Integration Tests
-        run: echo "🔄 Running integration tests..."  # Replace with actual command
+        run: npm run test:integration  # Adjust based on your setup
+        working-directory: website
 
-  prod:
-    name: 🚀 Production Deployment
-    needs: beta  # ✅ Runs only after Beta succeeds
+  production:  # 🚀 Stage 3: Production (Deployment)
+    needs: beta  # ✅ Runs only after Beta (integration tests) succeed
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: website  # ✅ Ensure correct directory
 
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
+
+      - name: ⚙️ Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+        working-directory: website
+
+      - name: 🏗️ Build Project
+        run: npm run build
+        working-directory: website
 
       - name: 🚀 Deploy Application
         run: |
-          echo "🚀 Deploying to production..."
-          # 🔥 Add actual deployment commands here (e.g., SSH, AWS, Firebase)
+          echo "🚀 Deploying to Production..."
+          # 🔥 Add deployment commands (e.g., AWS S3, Firebase, SSH, etc.)
