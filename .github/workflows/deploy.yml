@@ -1,23 +1,60 @@
-name: Node.js CI
+name: 🚀 CI/CD Pipeline
+
 on:
-    push:
-      branches:
-        - main
+  push:
+    branches:
+      - main  # 🔥 Change if needed
+
 jobs:
-  build:
+  alpha:
+    name: 🧪 Alpha - Unit Testing
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: ⚙️ Set Up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20'
 
-      - name: Install Dependencies
+      - name: 📦 Install Dependencies
         run: npm install
 
-      - name: Run Tests
+      - name: ✅ Run Unit Tests
         run: npm test
+
+  beta:
+    name: 🔄 Beta - Integration Testing
+    needs: alpha  # ✅ Runs only after Alpha succeeds
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔄 Run Integration Tests
+        run: echo "🔄 Running integration tests..."  # Replace with actual command
+
+  prod:
+    name: 🚀 Production Deployment
+    needs: beta  # ✅ Runs only after Beta succeeds
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Deploy Application
+        run: |
+          echo "🚀 Deploying to production..."
+          # 🔥 Add actual deployment commands here (e.g., SSH, AWS, Firebase)
