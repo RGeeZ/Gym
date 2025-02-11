@@ -14,7 +14,7 @@ jobs:
 
       - name: 🔍 Debug Directory Structure
         run: ls -R
-        working-directory: Gym  # ✅ Check folder structure
+        working-directory: .  # ✅ Check folder structure
 
       - name: ⚙️ Set Up Node.js
         uses: actions/setup-node@v4
@@ -22,12 +22,27 @@ jobs:
           node-version: '20'
 
       - name: 📦 Install Dependencies
-        run: npm install
-        working-directory: Gym/website  # ✅ Corrected path
+        run: npm ci
+        working-directory: .  # ✅ Corrected path
+
+      - name: 🔍 Debug Installed Packages
+        run: npm list --depth=0
+
+      - name: 📦 Install Dependencies2
+        run: npm install --include=dev
 
       - name: ✅ Run Unit Tests
-        run: npm test
-        working-directory: Gym/website
+        run: npm test --verbose
+
+
+    #   - name: ✅ Run Unit Tests
+    #     run: npx test
+    #     working-directory: .
+
+
+## BELOW WILL BE RUN POST INTEGRATION TESTING IS COMPLETED
+
+
 
   beta:  # ✅ Stage 2: Beta (Integration Testing)
     needs: alpha  # 🛑 Only runs if 'alpha' stage passes
@@ -43,11 +58,11 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
-        working-directory: Gym/website
+        working-directory: .
 
       - name: 🔬 Run Integration Tests
         run: npm run test:integration  # ✅ Run integration tests (replace with correct command)
-        working-directory: Gym/website
+        working-directory: .
 
   prod:  # ✅ Stage 3: Production Deployment
     needs: beta  # 🛑 Only runs if 'beta' stage passes
@@ -63,11 +78,11 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
-        working-directory: Gym/website
+        working-directory: .
 
       - name: 🏗️ Build Project
         run: npm run build  # ✅ Modify this for your build process
-        working-directory: Gym/website
+        working-directory: .
 
       - name: 🚀 Deploy Application
         run: |
